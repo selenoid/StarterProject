@@ -1,0 +1,16 @@
+<Page loaded="loadSignUpView">
+    <StackLayout>
+        <Label text="Name:" />
+        <TextField id="name" width="200"/>
+
+        <Label text="Email:" />
+        <TextField id="email" width="200"/>
+
+        <Label text="Twitter Handle:" />
+        <TextField id="twitterHandle" text="@" width="200"/>
+
+        <Button id="signUpButton" text="Sign Up" width="100"/>
+
+        <Label id="result" text=" " textWrap="true"/>
+    </StackLayout> 
+</Page>

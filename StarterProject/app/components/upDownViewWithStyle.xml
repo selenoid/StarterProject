@@ -1,0 +1,20 @@
+<Page loaded="loadUpDownView">
+    <StackLayout>
+        <Button tap="{{startNewGame}}" text="New Game" horizontalAlignment="center"  cssClass="actionButton"/>
+
+        <GridLayout rows="auto">
+            <Label text="  Cards Left:" cssClass="infoLabel" horizontalAlignment="left" />
+            <Label text="Score (Streak):  " cssClass="infoLabel" horizontalAlignment="right" />
+        </GridLayout>
+        <GridLayout rows="auto">
+            <Label text="{{'  ' + cardsLeft}}" cssClass="info" horizontalAlignment="left" />
+            <Label text="{{score + ' ('+ streak +')  '}}" cssClass="info" horizontalAlignment="right" />
+        </GridLayout>
+
+        <StackLayout orientation="horizontal" horizontalAlignment="center">
+            <Button tap="{{goLower}}" text="Lower" cssClass="actionButton" />
+            <Label text="{{currentCard}}" cssClass="card" />
+            <Button tap="{{goHigher}}" text="Higher" cssClass="actionButton" />
+        </StackLayout>
+    </StackLayout>
+</Page>

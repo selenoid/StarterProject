@@ -1,0 +1,14 @@
+<Page loaded="loadUpDownView">
+    <StackLayout>
+        <Button tap="{{startNewGame}}" text="New Game"/>
+
+        <Label text="{{'Cards Left: ' + cardsLeft}}" />
+        <Label text="{{'Score (Streak):' + score + ' ('+ streak +')  '}}" />
+
+        <StackLayout orientation="horizontal" horizontalAlignment="center">
+            <Button tap="{{goLower}}" text="Lower" />
+            <Label text="{{currentCard}}" />
+            <Button tap="{{goHigher}}" text="Higher" />
+        </StackLayout>
+    </StackLayout>
+</Page>
