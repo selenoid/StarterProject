@@ -1,0 +1,7 @@
+
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <StackLayout cssClass="container">
+    <Label text="{{'  ' + initialValue}}" horizontalAlignment="center" cssClass="infoLabel subPage" />
+    <Button tap="{{actionGo}}" horizontalAlignment="center"  text="Go" cssClass="actionButton" />
+  </StackLayout>
+</Page>
