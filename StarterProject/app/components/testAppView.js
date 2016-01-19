@@ -10,8 +10,8 @@ exports.pageLoaded = function(args) {
     viewModel.initApp();
 }
 
-exports.register = function() {
-    console.log("registering..." + this);
+exports.send = function() {
+    console.log("sending..." + this);
     
     var topmost = frameModule.topmost();
     topmost.navigate("components/subPageView");

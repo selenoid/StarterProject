@@ -1,28 +1,5 @@
-
 .container {
-    margin:30px 0 0 0;    
-}
-
-.info  {
-    font-size: 30;
-    color: #2E4F8A;
-}
-
-.infoLabel  {
-    padding:10px;
-    font-size: 22;
-    color: #99ABD6;
-}
-
-.subPage {
-    padding:10px 20px;
-    background-color:#FFCC00;
-}
-
-.card {
-    color: #D63326;
-    font-size: 100;
-    width: 100;
+    padding-top:50px;
 }
 
 Button {
@@ -30,7 +7,28 @@ Button {
     padding:10px 30px;
     width:auto;
     vertical-align: center;
-    background-color: #037AC4;
-    color: #8CE8FC;
+    background-color: #1277c3;
+    color: #ccc;
     font-size: 30;
+    border-radius:5px;
+    
+}
+
+.searchBox {
+    background-color:#cccccc;
+    border:1px #666 solid;
+    font-size:22px;
+    padding:10px 20px 10px 20px;
+}
+
+.listView {
+    margin-top:20px;
+}
+
+.viewList {
+    
+}
+
+.image {
+    
 }

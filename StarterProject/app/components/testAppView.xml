@@ -7,6 +7,6 @@
       <Label text="{{'Nu Integer: ' + nuInteger}}" cssClass="infoLabel" horizontalAlignment="left"/>
       <Label text="{{'Old Integer: ' + oldInteger}}" cssClass="infoLabel" horizontalAlignment="right" />
     </StackLayout>
-    <Button tap="register" horizontalAlignment="center"  text="Register" cssClass="actionButton" />
+    <Button tap="send" horizontalAlignment="center"  text="Send" cssClass="actionButton" />
   </StackLayout>
 </Page>
