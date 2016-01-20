@@ -1,34 +1,54 @@
-.container {
-    padding-top:50px;
+.container
+{
+    margin-top: 50px;
 }
 
-Button {
-    margin:10px 0 10px 0;
-    padding:10px 30px;
-    width:auto;
+Button
+{
+    margin: 10px 0 10px 0;
+    padding: 10px 30px;
+    width: auto;
     vertical-align: center;
     background-color: #1277c3;
     color: #ccc;
     font-size: 30;
-    border-radius:5px;
+    border-radius: 5px;
+}
+
+.searchBox
+{
+    border: 1px #666 solid;
+    font-size: 22px;
+    padding: 10px 20px 10px 20px;
+}
+
+.listView
+{
     
 }
 
-.searchBox {
-    background-color:#cccccc;
-    border:1px #666 solid;
-    font-size:22px;
-    padding:10px 20px 10px 20px;
-}
-
-.listView {
-    margin-top:20px;
-}
-
-.viewList {
+.viewList
+{
     
 }
 
-.image {
+.menuItem
+{
     
+}
+
+.label
+{
+    padding: 0 0 0 10px;
+    font-size: 25px;
+    font-weight: bold;
+    /*background-color: #DD0000; */
+}
+
+.labelRight
+{
+    padding: 0 10px 0;
+    font-size: 30px;
+    color: #ffcc00;
+    /*background-color: #DD0000;*/
 }

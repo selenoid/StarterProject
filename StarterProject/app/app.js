@@ -1,10 +1,5 @@
 var application = require('application');
-//application.mainModule = "components/helloWorldView";
-//application.mainModule = "components/signUpView";
-//application.mainModule = "components/journeyCalculatorView";
-//application.mainModule = "components/upDownView";
-//application.mainModule = "components/upDownViewWithStyle";
-application.mainModule = "components/testAppView";
+application.mainModule = "components/home/views/startView";
 application.cssFile = "./app.css";
 
 
@@ -12,11 +7,7 @@ application.cssFile = "./app.css";
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 
-function changePage(num) {
-    console.log ("change page " + num);
-}
-
-console.log ("thisis " +this);
+console.log ("application started! " +this);
 
 // END_CUSTOM_CODE_nativeScriptApp
 application.start();
