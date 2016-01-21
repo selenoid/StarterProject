@@ -6,15 +6,15 @@
     <Label text="" horizontalAlignment="center" height="30px;"/>
     <!-- placeholder -->
 
-    <ListView items="{{ listImages }}"
+    <ListView items="{{ listMenuItems }}"
               itemTap="{{ listViewItemTap }}" 
               cssClass="viewList" separatorColor="rgba(#FF000000)" >
 
       <ListView.itemTemplate >
 
-        <StackLayout orientation="vertical"  cssClass="menuItem" style.border-width="2px" style.border-color="4px;">
+        <StackLayout orientation="vertical"    cssClass="menuItem" style.border-width="2px" style.border-color="4px;">
           <DockLayout  style.backgroundColor="#EBEBEB" stretchLastChild="true" margin="1px 0" padding="22px 0">
-            <Label text="{{title}}"   dock="left" cssClass="label"         horizontalAlignment="left"/>
+            <Label text="{{title}}"            cssClass="label"             dock="left"         horizontalAlignment="left"/>
             <Label  text="{{contentTypeId}}"    cssClass="labelRight"    horizontalAlignment="right" />
           </DockLayout>
         </StackLayout>
