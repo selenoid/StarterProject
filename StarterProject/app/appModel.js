@@ -1,5 +1,6 @@
 
 var http = require("http");
+var frameModule = require("ui/frame");
 var logger = require("./components/util/util.js");
 var dataModel = require("./components/data/data.js");
 var serviceModel = require("./components/util/serviceUtil.js");
@@ -15,6 +16,7 @@ var appInstance = null;
 var appModel = new observable.Observable();
 
 appModel.id = "appModel";
+appModel.requestType = -1;
 
 appModel.initModule = function (app) {
     logger.log("initing module..." + app);
@@ -40,11 +42,34 @@ appModel.showMenuView = function (args) {
         args = "noArgsFound.";
     
     logger.log("show menu : " + args);
+    appModel.requestType = 4;
     serviceModel.getMenuService();
 }
 
 appModel.changeView = function (serviceResult) {
     logger.log("changing view..." + serviceResult.data[0].MenuText);
+    logger.log("requestType : " + appModel.requestType);
+    
+    var navigationEntry = {};
+    
+    switch (appModel.requestType) {
+        
+        case dataModel.ContentType.MENU:
+            navigationEntry = {
+                moduleName : "./components/home/views/menuView",
+                context : {
+                    menuList : serviceResult.data
+                }
+            };
+            
+            break;
+        default:
+            //
+            break;
+    }
+    
+    var topmost = frameModule.topmost();
+    topmost.navigate(navigationEntry);
 }
 
 //Exposes the observable object as a module, which can be required from another js file.

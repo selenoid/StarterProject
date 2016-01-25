@@ -1,6 +1,6 @@
 
 var http = require("http");
-var logger = require("./components/util/util.js");
+var logger = require("../../util/util.js");
 var dataModel = require("../../data/data.js");
 var serviceModel = require("../../util/serviceUtil.js");
 var observable = require("data/observable");
@@ -22,6 +22,7 @@ vm.listViewItemTap = function (args) {
 }
 
 vm.setListData = function (menuList) {
+    
     console.log("menuList length : " + menuList.length);
     console.log("MENU_ITEMS 1 : " + menuItems.length);
     
@@ -37,33 +38,19 @@ vm.setListData = function (menuList) {
     console.log("MENU_ITEMS 2 : " + menuItems.length);
 }
 
-vm.initApp = function() {
+vm.initApp = function(_menuItems) {
     
     this.set('listMenuItems', menuItems);
-    vm.set('txtKeyword', "Car");
-    
-    getService();
+    vm.setListData(_menuItems);
 }
 
 vm.actionGo = function() {
     this.set("initialValue", "The New Value " + getRandom(10));
 };
 
-vm.onServiceComplete = function (serviceResult) {
-    if (serviceResult.error === 0) {
-        vm.setListData(serviceResult.data);
-    }else {
-        console.log("success..." + serviceResult.error.toString());
-    }
-}
-
 function selectItem (selectionDataItem) {
     var title = menuItems.getItem(selectionDataItem.index).title;
     console.log("selectItem:" + title);
-}
-
-function getService() {
-    serviceModel.getMenuService(vm.onServiceComplete);
 }
 
 

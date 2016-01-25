@@ -29,6 +29,7 @@ serviceModule.addListener = function (listener) {
 
 serviceModule.getMenuService = function () {
    
+    logger.log("getting menu service..");
     var delegateMenuItems = [];
     http.getJSON("http://contentapi.activebuilder.com:80/menu/items/8064/1").then(function (r) {
         // Argument (r) is JSON!

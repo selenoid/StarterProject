@@ -1,9 +1,10 @@
 
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo">
+
 
   <StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
     <!-- placeholder -->
-    <Label text="" horizontalAlignment="center" height="30px;"/>
+    <Label text="MENU PAGE" horizontalAlignment="center" height="30px;"/>
     <!-- placeholder -->
 
     <ListView items="{{ listMenuItems }}"
