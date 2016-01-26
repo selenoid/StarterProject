@@ -1,28 +1,55 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo" actionBarHidden="true">
-  <GridLayout columns="*,*,*,*" rows="auto, *">
-    <GridLayout class="header-container" colSpan="5" columns="*,*,*,*,*">
-      <Image src="~/images/ui/logo.png" horizontalAlignment="left" verticalAlignment="center" cssClass="top-header-left-icon" tap="refresh" />
-      <Label cssClass="menu-header" text="My Weather" colSpan="5" horizontalAlignment="center" verticalAlignment="center"/>
-      <Image src="~/images/icons/details.png" col="4" horizontalAlignment="right" verticalAlignment="center" cssClass="top-header-right-icon" tap="openInfo"/>
-    </GridLayout>
-    <StackLayout class="blue1-container" colSpan="4" row="1">
+
+  <StackLayout cssClass="wrapper" orientation="vertical" height="auto" horizontalAlignment="stretch" verticalAlignment="top" style.background-color="#FFCC00">
+
+    <StackLayout cssClass="container" orientation="vertical" height="62px" horizontalAlignment="stretch" verticalAlignment="top" style.background-color="#111111">
+      <GridLayout class="header-container" colSpan="3" columns="*,*,*" height="60,0">
+        <Image row="0" col="0" src="~/images/ui/logo.png" cssClass="logo" horizontalAlignment="left" verticalAlignment="center" />
+        <Label row="0" col="1" text="Main Menu" cssClass="menu-header" horizontalAlignment="center"  verticalAlignment="center" />
+        <Image row="0" col="3" src="~/images/icons/recents.png" horizontalAlignment="right" verticalAlignment="center"/>
+
+      </GridLayout>
+    </StackLayout>
+    <StackLayout cssClass="content-wrapper" orientation="vertical" height="990px" horizontalAlignment="stretch" verticalAlignment="top"  >
+      <Image  src="~/images/icons/details.png" horizontalAlignment="center" verticalAlignment="center" height="20px"/>
       <ListView items="{{ listItems }}"
                 itemTap="{{ listViewItemTap }}" 
-                cssClass="viewList" separatorColor="rgba(#FF000055)" >
+                cssClass="viewList" separatorColor="rgba(#FF000055)"  height="auto" >
 
         <ListView.itemTemplate >
-          <StackLayout orientation="vertical"    cssClass="menuItem">
-            <DockLayout stretchLastChild="true" cssClass="menuItem-inner">
-              <Label text="{{title}}" cssClass="title" dock="left" horizontalAlignment="left"/>
-              <Label text="{{contentTypeId}}" cssClass="id-type" dock="left" horizontalAlignment="right" />
-              <Label text="{{itemId}}" cssClass="id-item" horizontalAlignment="right" />
-            </DockLayout>
-          </StackLayout>
+          <GridLayout class="menu-item" colSpan="3" columns="60%,*,60%" height="auto">
+            <Image row="0" col="0" src="~/images/ui/pic2.png"   cssClass="id-type" horizontalAlignment="left" verticalAlignment="center" width=""/>
+            <!--<Label row="0" col="0" text="{{contentTypeId}}" cssClass="id-type"   horizontalAlignment="left"    verticalAlignment="center"/> -->
+            <Label row="0" col="1" text="{{title}}"             cssClass="title"     horizontalAlignment="left"  verticalAlignment="center" colspan="2"/>
+            <Label row="0" col="2" text="{{itemId}}"            cssClass="id-item"   horizontalAlignment="right"   verticalAlignment="center"/>
+          </GridLayout>
         </ListView.itemTemplate>
 
       </ListView>
+      
     </StackLayout>
+  </StackLayout>
+  <!--GridLayout class="header-container" colSpan="5" columns="*,*,*,*,*">
+  <Image src="~/images/ui/logo.png" horizontalAlignment="left" verticalAlignment="center" cssClass="top-header-left-icon" tap="refresh" />
+  <Label cssClass="menu-header" text="My Weather" colSpan="5" horizontalAlignment="center" verticalAlignment="center"/>
+  <Image src="~/images/icons/details.png" col="4" horizontalAlignment="right" verticalAlignment="center" cssClass="top-header-right-icon" tap="openInfo"/>
   </GridLayout>
+  <StackLayout class="blue1-container" colSpan="4" row="1">
+  <ListView items="{{ listItems }}"
+  itemTap="{{ listViewItemTap }}" 
+  cssClass="viewList" separatorColor="rgba(#FF000055)" >
+
+  <ListView.itemTemplate >
+  <GridLayout class="menu-item" colSpan="5" columns="*,*,*,*,*">
+  <Label text="{{contentTypeId}}" cssClass="id-type" horizontalAlignment="left" />
+  <Label text="{{title}}" cssClass="title" colSpan="5" horizontalAlignment="center" verticalAlignment="center"/>
+  <Label text="{{itemId}}" col="4"  cssClass="id-item" horizontalAlignment="right" />
+  </GridLayout>
+  </ListView.itemTemplate>
+
+  </ListView>
+  </StackLayout>
+  </GridLayout -->
 
   <!--<StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
 
