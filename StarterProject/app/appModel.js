@@ -96,17 +96,21 @@ appModel.changeView = function (serviceResult) {
             
             break;
         case dataModel.ContentType.CATEGORY:
-            logger.debug("changing to category view..." + 
-                         serviceResult.data[0].Title + ", " + 
-                         serviceResult.data[0].CategoryId + ", " +
-                         serviceResult.data[0].ImageUrl);
-            navigationEntry = {
-                moduleName : "./components/home/views/categoryView",
-                context : {
-                    viewData : serviceResult.data,
-                    viewDelegate : viewDelegate
-                }
-            };
+            try {
+                logger.debug("changing to category view..." + 
+                             serviceResult.data[0].Title + ", " + 
+                             serviceResult.data[0].CategoryId + ", " +
+                             serviceResult.data[0].ImageUrl);
+                navigationEntry = {
+                    moduleName : "./components/home/views/categoryView",
+                    context : {
+                        viewData : serviceResult.data,
+                        viewDelegate : viewDelegate
+                    }
+                };
+            } catch (e) {
+                logger.debug("Error in ChangeView..." + e.toString());
+            }
             
             break;
         default:

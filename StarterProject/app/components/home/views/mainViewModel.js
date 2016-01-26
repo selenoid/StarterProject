@@ -21,9 +21,10 @@ vm.startApp = function() {
 vm.onServiceComplete = function (serviceResult) {
     
     if (serviceResult.error === 0) {
+        logger.debug ("ON SERVICE COMPLETE....");
         vm.setListData(serviceResult.data);
     }else {
-        console.log("success..." + serviceResult.error.toString());
+        console.debug("success..." + serviceResult.error.toString());
     }
 }
 

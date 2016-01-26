@@ -1,5 +1,5 @@
 Page {
-    background-color:#00FF00;
+    /*background-color:#00FF00;*/
 }
 
 .container {
@@ -31,16 +31,14 @@ Page {
 }
 
 .menu-header {
-    color:#3344789;
-    font-size:24px;
+    color:#334478;
+    font-size:20px;
 }
 
 .menu-item {
-    background-color:#ebebeb;
+    /*background-color:#CCCCCC;*/
     margin:0 0 3px 0;
-    /*margin:0 0 1px;
     padding:15px 10px;
-    */
 }
 
 .menuItem-inner {
@@ -52,7 +50,7 @@ Page {
 }
 
 .title {
-    background-color:#e5e5e5;
+    margin:0 0 0 10px;
 }
 
 .id-type {

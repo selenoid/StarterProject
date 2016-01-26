@@ -28,6 +28,9 @@ vm.listViewItemTap = function (args) {
 }
 
 vm.setListData = function (viewData) {
+    
+    logger.info("*********setting data model in categoryViewModel...");
+    
     var viewList = viewData;
     
     while (listItems.length > 0) {
@@ -36,19 +39,32 @@ vm.setListData = function (viewData) {
 	    
     for (var i = 0;i < viewList.length;i++) {
         var img = dataModel.defaultListThumbnailUrl;
-        logger.debug("image : " + img);
+        img = dataModel.defaultListThumbnailLocalUrl;
+        
+        logger.info("LOADIN LOCAL IMAGE... " + img);
+        
         listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        /*listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });*/
     }
     
     logger.log("CATEGORY_ITEMS 2 : " + listItems.length);
 }
 
 vm.initApp = function(dataBundle) {
-    logger.debug("set dataBundle in categoryViewModel...");
+    logger.info("*******set dataBundle in categoryViewModel...");
     this.set('listItems', listItems);
-    
-    vm.setDelegate(dataBundle.viewDelegate);
-    vm.setListData(dataBundle.viewData);
+    try {
+        vm.setDelegate(dataBundle.viewDelegate);
+        vm.setListData(dataBundle.viewData);
+    }catch (e) {
+        logger.info("Error initing category app..." + e.toString()+" (" + dataBundle.viewData +")");
+    }
 }
 
 vm.actionGo = function() {
@@ -65,7 +81,7 @@ function selectItem (selectionDataItem) {
         
         if (delegate !== undefined) {
             var tempData = {title:title, categoryId:categoryId, imageUrl:imageUrl};
-            logger.debug("tempData:" + tempData);
+            logger.debug("tempData:" + tempData.imageUrl);
             delegate.onListItemSelect(tempData);
         } else {
             logger.log("no view delegate defined..");

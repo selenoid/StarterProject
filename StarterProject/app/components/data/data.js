@@ -13,6 +13,7 @@ dataModule.ContentType = {
 }
 dataModule.startMenuId = 8064;
 dataModule.defaultListThumbnailUrl = "http://m.halkbank.com.tr/images/articles/mobil_ipad/2015/hb_donusumlu_mevduat_banner_129x156px-01.jpg";
+dataModule.defaultListThumbnailLocalUrl = "~/images/ui/pic4026.png";
 
 //Exposes the observable object as a module, which can be required from another js file.
 module.exports = dataModule;
