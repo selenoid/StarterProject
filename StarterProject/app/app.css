@@ -2,12 +2,26 @@
     color:#3377cc;
 }
 
-.header-top {
-    padding:12px 10px;
+.header-container {
+    padding:8px 10px;
+}
+
+.top-header-left-icon {
+    
+}
+
+.top-header-right-icon {
+    width:25px;
+    height:25px;
+}
+
+.menu-header {
+    font-size:22px;
+    background-color:#DEDEDE;
 }
 
 .menuItem {
-    margin:4px 0;
+    margin:0 0 1px;
     padding:10px 0px;
     background-color:#EBEBEB;
 }
