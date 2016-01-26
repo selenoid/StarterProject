@@ -41,14 +41,19 @@ Button
 {
     padding: 0 0 0 10px;
     font-size: 25px;
-    font-weight: bold;
     /*background-color: #DD0000; */
 }
 
 .labelRight
 {
     padding: 0 10px 0;
-    font-size: 30px;
-    color: #ffcc00;
+    font-size: 16px;
+    color: #555;
     /*background-color: #DD0000;*/
+}
+
+.header-title {
+    color:#ffcc00;
+    margin:50px 0 10px 0;
+    font-size:40px; 
 }
