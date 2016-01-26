@@ -1,6 +1,32 @@
+.container {
+    color:#3377cc;
+}
+
+.header-top {
+    padding:12px 10px;
+}
+
+.menuItem {
+    margin:4px 0;
+    padding:10px 0px;
+    background-color:#EBEBEB;
+}
+
+.menuItem-inner {
+    padding:0 10px;
+}
+
+
+/*
 .container
 {
     margin-top: 50px;
+    color:#3377cc;
+}
+
+.header-top {
+    padding:10px 0;
+    background-color:#CCCCCC;
 }
 
 Button
@@ -41,19 +67,18 @@ Button
 {
     padding: 0 0 0 10px;
     font-size: 25px;
-    /*background-color: #DD0000; */
 }
 
 .labelRight
 {
     padding: 0 10px 0;
     font-size: 16px;
-    color: #555;
-    /*background-color: #DD0000;*/
+    color: #888;
 }
 
 .header-title {
-    color:#ffcc00;
-    margin:50px 0 10px 0;
-    font-size:40px; 
+    margin:20px 0 10px 0;
+    font-size:40px;
+    height:30px;
 }
+*/

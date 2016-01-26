@@ -1,24 +1,22 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo" actionBarHidden="false">
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo" actionBarHidden="true">
 
   <StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
-    <!-- placeholder -->
-    <Label text="" horizontalAlignment="center" height="30px;"/>
-    <!-- placeholder -->
-    <Label cssClass="header-title" text="MENU PAGE" horizontalAlignment="center" height="30px;"/>
+    <StackLayout cssClass="header-top" orientation="horizontal" horizontalAlignment="center">
+      <Image src="~/images/ui/logo.png" stretch="none" horizontalAlignment="left" />
+      <Label cssClass="header-title" text="MENU PAGE" horizontalAlignment="center"/>
+    </StackLayout>
     <ListView items="{{ listItems }}"
               itemTap="{{ listViewItemTap }}" 
-              cssClass="viewList" separatorColor="rgba(#FF000000)" >
+              cssClass="viewList" separatorColor="rgba(#FF000055)" >
 
       <ListView.itemTemplate >
-
-        <StackLayout orientation="vertical"    cssClass="menuItem" style.border-width="2px" style.border-color="4px">
-          <DockLayout  style.backgroundColor="#EBEBEB" stretchLastChild="true" margin="1px 0" padding="22px 0">
-            <Label text="{{title}}"            cssClass="label"             dock="left"         horizontalAlignment="left"/>
-            <Label  text="{{contentTypeId}}"    cssClass="labelRight"    horizontalAlignment="right" />
-            <Label  text="{{itemId}}"            cssClass="labelRight"    horizontalAlignment="right" />
+        <StackLayout orientation="vertical"    cssClass="menuItem">
+          <DockLayout stretchLastChild="true" cssClass="menuItem-inner">
+            <Label text="{{title}}" cssClass="title" dock="left" horizontalAlignment="left"/>
+            <Label text="{{contentTypeId}}" cssClass="id-type" dock="left" horizontalAlignment="right" />
+            <Label text="{{itemId}}" cssClass="id-item" horizontalAlignment="right" />
           </DockLayout>
         </StackLayout>
-
       </ListView.itemTemplate>
 
     </ListView>

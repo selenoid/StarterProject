@@ -29,13 +29,21 @@ vm.listViewItemTap = function (args) {
 
 vm.setListData = function (viewData) {
     var viewList = viewData;
-    
+
     while (listItems.length > 0) {
         listItems.pop();
     }
-	    
+  
     for (var i = 0;i < viewList.length;i++) {
         listItems.push({ title: viewList[i].MenuText, contentTypeId:viewList[i].ContentTypeId, itemId:viewList[i].ItemId });
+    }
+    
+    for (var n = 0;n < viewList.length;n++) {
+        listItems.push({ title: viewList[n].MenuText, contentTypeId:viewList[n].ContentTypeId, itemId:viewList[n].ItemId });
+    }
+    
+    for (var j = 0;j < viewList.length;j++) {
+        listItems.push({ title: viewList[j].MenuText, contentTypeId:viewList[j].ContentTypeId, itemId:viewList[j].ItemId });
     }
     
     logger.log("MENU_ITEMS 2 : " + listItems.length);
