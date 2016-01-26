@@ -1,9 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo" actionBarHidden="false">
 
   <StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
-    <!-- placeholder -->
     <Label text="" horizontalAlignment="center" height="30px;"/>
-    <!-- placeholder -->
     <Label cssClass="header-title" text="CATEGORIES PAGE" horizontalAlignment="center" height="30px;"/>
     <ListView items="{{ listItems }}"
               itemTap="{{ listViewItemTap }}" 
