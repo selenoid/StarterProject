@@ -1,26 +1,53 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo" actionBarHidden="true">
+  <GridLayout columns="*,*,*,*" rows="auto, *">
+    <GridLayout class="header-container" colSpan="5" columns="*,*,*,*,*">
+      <Image src="~/images/ui/logo.png" horizontalAlignment="left" verticalAlignment="center" tap="refresh" />
+      <Label text="My Weather" colSpan="5" horizontalAlignment="center" verticalAlignment="center"/>
+      <ActivityIndicator col="3" busy="{{ isLoading }}" horizontalAlignment="right" />
+      <Image src="~/images/icons/logo.png" horizontalAlignment="right" verticalAlignment="center" class="top-icon weather-icon small-icon" tap="openInfo"/>
+    </GridLayout>
+    <StackLayout class="blue1-container" colSpan="4" row="1">
+      <ListView items="{{ listItems }}"
+                itemTap="{{ listViewItemTap }}" 
+                cssClass="viewList" separatorColor="rgba(#FF000055)" >
 
-  <StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
-    <StackLayout cssClass="header-top" orientation="horizontal" horizontalAlignment="center">
-      <Image src="~/images/ui/logo.png" stretch="none" horizontalAlignment="left" />
-      <Label cssClass="header-title" text="MENU PAGE" horizontalAlignment="center"/>
+        <ListView.itemTemplate >
+          <StackLayout orientation="vertical"    cssClass="menuItem">
+            <DockLayout stretchLastChild="true" cssClass="menuItem-inner">
+              <Label text="{{title}}" cssClass="title" dock="left" horizontalAlignment="left"/>
+              <Label text="{{contentTypeId}}" cssClass="id-type" dock="left" horizontalAlignment="right" />
+              <Label text="{{itemId}}" cssClass="id-item" horizontalAlignment="right" />
+            </DockLayout>
+          </StackLayout>
+        </ListView.itemTemplate>
+
+      </ListView>
     </StackLayout>
-    <ListView items="{{ listItems }}"
-              itemTap="{{ listViewItemTap }}" 
-              cssClass="viewList" separatorColor="rgba(#FF000055)" >
+  </GridLayout>
 
-      <ListView.itemTemplate >
-        <StackLayout orientation="vertical"    cssClass="menuItem">
-          <DockLayout stretchLastChild="true" cssClass="menuItem-inner">
-            <Label text="{{title}}" cssClass="title" dock="left" horizontalAlignment="left"/>
-            <Label text="{{contentTypeId}}" cssClass="id-type" dock="left" horizontalAlignment="right" />
-            <Label text="{{itemId}}" cssClass="id-item" horizontalAlignment="right" />
-          </DockLayout>
-        </StackLayout>
-      </ListView.itemTemplate>
+  <!--<StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
 
-    </ListView>
-
+  <StackLayout cssClass="header-top" orientation="horizontal" horizontalAlignment="center">
+  <Image src="~/images/ui/logo.png" stretch="none" horizontalAlignment="left" />
+  <Label cssClass="header-title" text="MENU PAGE" horizontalAlignment="center"/>
   </StackLayout>
+
+  <ListView items="{{ listItems }}"
+  itemTap="{{ listViewItemTap }}" 
+  cssClass="viewList" separatorColor="rgba(#FF000055)" >
+
+  <ListView.itemTemplate >
+  <StackLayout orientation="vertical"    cssClass="menuItem">
+  <DockLayout stretchLastChild="true" cssClass="menuItem-inner">
+  <Label text="{{title}}" cssClass="title" dock="left" horizontalAlignment="left"/>
+  <Label text="{{contentTypeId}}" cssClass="id-type" dock="left" horizontalAlignment="right" />
+  <Label text="{{itemId}}" cssClass="id-item" horizontalAlignment="right" />
+  </DockLayout>
+  </StackLayout>
+  </ListView.itemTemplate>
+
+  </ListView>
+
+  </StackLayout> -->
 
 </Page>
