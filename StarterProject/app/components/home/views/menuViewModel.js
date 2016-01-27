@@ -50,7 +50,7 @@ vm.setListData = function (viewData) {
 }
 
 vm.initApp = function(dataBundle) {
-    logger.debug("set dataBundle in menuViewModel...");
+    logger.log("set dataBundle in menuViewModel...");
     this.set('listItems', listItems);
     
     vm.setDelegate(dataBundle.viewDelegate);

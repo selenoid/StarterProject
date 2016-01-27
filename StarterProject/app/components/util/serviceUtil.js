@@ -9,7 +9,7 @@ var serviceModule = new observable.Observable();
 var eventListener = 'null';
 
 serviceModule.getMenuItems = function () {
-    logger.debug("this is " + this + "and myMenuItems : " + this.myMenuItems);
+    logger.log("this is " + this + "and myMenuItems : " + this.myMenuItems);
     return this.myMenuItems;
 }
 
@@ -18,7 +18,7 @@ serviceModule.addListener = function (listener) {
 }
 
 serviceModule.onDataRetrieved = function (r) {
-    logger.debug("ON DATA RETRIEVED : " + r);
+    logger.log("tag", "ON DATA RETRIEVED : " + r);
     var event = {
         eventName: "onServiceComplete",
         object: { data:r,  error:0 }
@@ -28,7 +28,7 @@ serviceModule.onDataRetrieved = function (r) {
 }
 
 serviceModule.onDataFailed = function (e) {
-    logger.debug('!!!!!!!!!!onURLRequestError : ' + e.toString());
+    logger.error('!!!!!!!!!!onURLRequestError : ' + e.toString());
     
     var event = {
         eventName: "onServiceComplete",
@@ -39,14 +39,14 @@ serviceModule.onDataFailed = function (e) {
 }
 
 serviceModule.getService = function (_url) {
-    logger.debug("getting menu service.." + _url);
+    logger.log("tag",["getting menu service.." + _url]);
            
     var cachedItem = cacheManager.getItemWithKey(_url);
-    logger.debug("cached item : " + cachedItem);
+    logger.log("cached item : " + cachedItem);
     
     try {
         if (cachedItem) {
-            logger.debug("retrieve JSON data from CACHE..." + cachedItem);
+            logger.log("retrieve JSON data from CACHE..." + cachedItem);
             serviceModule.onDataRetrieved(cachedItem);
             return;
         }
@@ -54,30 +54,30 @@ serviceModule.getService = function (_url) {
         logger.error("getServiceError : " + e);
     }
     
-    logger.debug("retrieve JSON data from remote service.LOADING..." + _url);
+    logger.log("retrieve JSON data from remote service.LOADING..." + _url);
     
     http.getJSON(_url).then(function (r) {
         // Argument (r) is JSON!
-        logger.debug('GET JSON COMPLETE : ' + r.length);
+        logger.log('GET JSON COMPLETE : ' + r.length);
             
         cacheManager.addItemWithKey(_url, r);
         serviceModule.onDataRetrieved(r);
     }, function (e) {
-        logger.debug("getJSONError : " + e.toString());
+        logger.log("getJSONError : " + e.toString());
         // Argument (e) is Error!
         serviceModule.onDataFailed(e);
     });
 }
 
 /*serviceModule.getCategoryService = function (_url, itemId) {
-    logger.debug("getting category service.." + _url);
+    logger.log("getting category service.." + _url);
            
     var cachedItem = cacheManager.getItemWithKey(_url);
-    logger.debug("cached item : " + cachedItem);
+    logger.log("cached item : " + cachedItem);
     
     try {
         if (cachedItem) {
-            logger.debug("retrieve JSON data from CACHE..." + cachedItem);
+            logger.log("retrieve JSON data from CACHE..." + cachedItem);
             serviceModule.onDataRetrieved(cachedItem);
             return;
         }
@@ -85,16 +85,16 @@ serviceModule.getService = function (_url) {
         logger.error("getCategoryService : " + e);
     }
     
-    logger.debug("retrieve JSON data from remote service.LOADING...");
+    logger.log("retrieve JSON data from remote service.LOADING...");
     
     http.getJSON(_categoryUrl).then(function (r) {
         // Argument (r) is JSON!
-        logger.debug('GET JSON COMPLETE : ' + r.length);
+        logger.log('GET JSON COMPLETE : ' + r.length);
             
         cacheManager.addItemWithKey(_url, r);
         serviceModule.onDataRetrieved(r);
     }, function (e) {
-        logger.debug("faz-error : " + e.toString());
+        logger.log("faz-error : " + e.toString());
         // Argument (e) is Error!
         serviceModule.onDataFailed(e);
     });

@@ -20,6 +20,7 @@ appModel.id = "appModel";
 appModel.requestType = -1;
 
 appModel.initModule = function (app) {
+    
     logger.log("initing module..." + app);
     serviceModel.addListener(appModel);
     

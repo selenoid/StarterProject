@@ -1,5 +1,6 @@
 
 var http = require("http");
+
 var logger = require("../../util/util.js");
 var dataModel = require("../../data/data.js");
 var serviceModel = require("../../util/serviceUtil.js");
@@ -7,12 +8,14 @@ var observable = require("data/observable");
 var observableModule = require("data/observable");
 var observableArray = require("data/observable-array");
 
+
 var id = "categoryViewModel";
 var listItems = new observableArray.ObservableArray([]);
 
 //Creates an instance of an observable object.
 var vm = new observable.Observable();
 var delegate;
+
 
 vm.setDelegate = function (_delegate) {
     delegate = _delegate;
@@ -28,7 +31,6 @@ vm.listViewItemTap = function (args) {
 }
 
 vm.setListData = function (viewData) {
-    
     logger.info("*********setting data model in categoryViewModel...");
     
     var viewList = viewData;
@@ -41,16 +43,11 @@ vm.setListData = function (viewData) {
         var img = dataModel.defaultListThumbnailUrl;
         img = dataModel.defaultListThumbnailLocalUrl;
         
-        logger.info("LOADIN LOCAL IMAGE... " + img);
-        
-        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
-        /*listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
-        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
-        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
-        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
-        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
-        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
-        listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });*/
+        for (var n = 0; n < 10; n++) {
+            img = dataModel.mStrings[n];
+            logger.log("tag","imgUrl :" + img);
+            listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        }
     }
     
     logger.log("CATEGORY_ITEMS 2 : " + listItems.length);
@@ -63,7 +60,7 @@ vm.initApp = function(dataBundle) {
         vm.setDelegate(dataBundle.viewDelegate);
         vm.setListData(dataBundle.viewData);
     }catch (e) {
-        logger.info("Error initing category app..." + e.toString()+" (" + dataBundle.viewData +")");
+        logger.info("Error initing category app..." + e.toString() + " (" + dataBundle.viewData + ")");
     }
 }
 
@@ -81,7 +78,7 @@ function selectItem (selectionDataItem) {
         
         if (delegate !== undefined) {
             var tempData = {title:title, categoryId:categoryId, imageUrl:imageUrl};
-            logger.debug("tempData:" + tempData.imageUrl);
+            logger.log("tempData:" + tempData.imageUrl);
             delegate.onListItemSelect(tempData);
         } else {
             logger.log("no view delegate defined..");

@@ -7,7 +7,7 @@ var logger = require("./util.js");
 var dictionary = {};
 var cacheManager = new observable.Observable();
 
-logger.debug("CacheManager inited..." + cacheManager);
+logger.log("CacheManager inited..." + cacheManager);
 
 function CustomError(errorCode, message, errorName) {
     this.name = errorName || 'CacheManagerError';
@@ -28,7 +28,7 @@ CustomError.prototype = Object.create(Error.prototype);
 CustomError.prototype.constructor = CustomError;
 
 cacheManager.addItemWithKey = function (key, data) {
-    logger.debug('adding item >> checking cacheManager...' + key);
+    logger.log('adding item >> checking cacheManager...' + key);
     
     var checkItem = (dictionary["" + key]);
     
@@ -42,12 +42,12 @@ cacheManager.addItemWithKey = function (key, data) {
 
         return false;
     } else {
-        /*logger.debug("---------------------------");
-        logger.debug('adding item ');
-        logger.debug('                with key: ' + key + ', data: ' + data);
-        logger.debug('                data: ' + data);
-        logger.debug("    ");
-        logger.debug("    ");*/
+        /*logger.log("---------------------------");
+        logger.log('adding item ');
+        logger.log('                with key: ' + key + ', data: ' + data);
+        logger.log('                data: ' + data);
+        logger.log("    ");
+        logger.log("    ");*/
         dictionary[key] = data;
         cacheManager.listItems();
     }
@@ -55,11 +55,11 @@ cacheManager.addItemWithKey = function (key, data) {
 
 cacheManager.getItemWithKey = function (key) {
     
-    logger.debug("getting item with key...");
+    logger.log("getting item with key..."  + key);
     
     var retval = dictionary[key];
     if (retval) {
-        logger.debug("returning item with key..." + retval);
+        logger.log("returning item with key..." + retval);
         return retval;
     } else {
         logger.warn("an dictionary item with key '" + key + "' not found.");
@@ -68,19 +68,19 @@ cacheManager.getItemWithKey = function (key) {
 }
 
 cacheManager.listItems = function () {
-    /*logger.debug("---------------------------");
-    logger.debug("---------------------------");
-    logger.debug("listing items...");*/
+    /*logger.log("---------------------------");
+    logger.log("---------------------------");
+    logger.log("listing items...");*/
     if (Object.keys(dictionary).length > 0) {
         for (var key in dictionary) {
             // skip loop if the property is from prototype
             if (!dictionary.hasOwnProperty(key))
                 continue;
             var item = dictionary[key];
-            logger.debug(key + " = " + item);
+            logger.log(key + " = " + item);
         }
     } else {
-        logger.debug('_no entry found...');
+        logger.log('_no entry found...');
     }
 }
 

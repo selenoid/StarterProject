@@ -14,6 +14,40 @@ dataModule.ContentType = {
 dataModule.startMenuId = 8064;
 dataModule.defaultListThumbnailUrl = "http://m.halkbank.com.tr/images/articles/mobil_ipad/2015/hb_donusumlu_mevduat_banner_129x156px-01.jpg";
 dataModule.defaultListThumbnailLocalUrl = "~/images/ui/pic4026.png";
-
+dataModule.mStrings = [
+    "http://androidexample.com/media/webservice/LazyListView_images/image0.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image1.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image2.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image3.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image4.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image5.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image6.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image7.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image8.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image9.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image10.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image0.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image1.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image2.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image3.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image4.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image5.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image6.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image7.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image8.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image9.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image10.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image0.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image1.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image2.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image3.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image4.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image5.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image6.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image7.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image8.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image9.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image10.png"
+];
 //Exposes the observable object as a module, which can be required from another js file.
 module.exports = dataModule;

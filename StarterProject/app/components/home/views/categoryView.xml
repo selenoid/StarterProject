@@ -1,6 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo" actionBarHidden="false">
 
   <StackLayout cssClass="wrapper" orientation="vertical" height="auto" horizontalAlignment="stretch" verticalAlignment="top" style.background-color="#FFCC00">
+    
     <StackLayout cssClass="container" orientation="vertical" height="62px" horizontalAlignment="stretch" verticalAlignment="top" style.background-color="#FFCC00">
       <GridLayout class="header-container" colSpan="3" columns="100,*,100" height="60,0">
         <Image row="0" col="0" src="~/images/ui/logo.png" cssClass="logo" horizontalAlignment="left" verticalAlignment="center" />
@@ -28,28 +29,6 @@
         </ListView.itemTemplate>
 
       </ListView>
-      <!--<StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
-      <Label text="" horizontalAlignment="center" height="30px;"/>
-      <Label cssClass="header-title" text="CATEGORIES PAGE" horizontalAlignment="center" height="30px;"/>
-      <ListView items="{{ listItems }}"
-      itemTap="{{ listViewItemTap }}" 
-      cssClass="viewList" separatorColor="rgba(#FF000000)" >
-
-      <ListView.itemTemplate >
-
-      <StackLayout orientation="vertical"    cssClass="menuItem" style.border-width="2px" style.border-color="4px;">
-      <DockLayout  style.backgroundColor="#EBEBEB" stretchLastChild="true" margin="1px 0" padding="0px 0" style.height="120px">
-      <Image src="{{ imageUrl }}" stretch="none" cssClass="labelRight"    horizontalAlignment="right" style.width="70px" style.height="70px"/>
-      <Label text="{{title}}"            cssClass="label"             dock="left"         horizontalAlignment="left"/>
-      <Label  text="{{categoryId}}"    cssClass="labelRight"    horizontalAlignment="right" />
-      </DockLayout>
-      </StackLayout>
-
-      </ListView.itemTemplate>
-
-      </ListView>
-
-      </StackLayout> -->
     </StackLayout>
   </StackLayout>
 </Page>

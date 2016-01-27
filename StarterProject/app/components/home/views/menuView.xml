@@ -20,7 +20,6 @@
           <StackLayout orientation="vertical" horizontalAlignment="left" verticalAlignment="top" width="stretch" height="auto;">
             <GridLayout class="menu-item" colSpan="3" columns="50%,*,60%" height="auto">
               <Image row="0" col="0" src="~/images/ui/pic2.png"   cssClass="id-type" horizontalAlignment="left" verticalAlignment="center"/>
-              <!--<Label row="0" col="0" text="{{contentTypeId}}" cssClass="id-type"   horizontalAlignment="left"    verticalAlignment="center"/> -->
               <Label row="0" col="1" text="{{title}}"             cssClass="title"     horizontalAlignment="left"  verticalAlignment="center" colspan="2"/>
               <Label row="0" col="2" text="{{itemId}}"            cssClass="id-item"   horizontalAlignment="right"   verticalAlignment="center"/>
             </GridLayout>
@@ -30,54 +29,6 @@
         </ListView.itemTemplate>
 
       </ListView>
-
     </StackLayout>
   </StackLayout>
-  <!--GridLayout class="header-container" colSpan="5" columns="*,*,*,*,*">
-  <Image src="~/images/ui/logo.png" horizontalAlignment="left" verticalAlignment="center" cssClass="top-header-left-icon" tap="refresh" />
-  <Label cssClass="menu-header" text="My Weather" colSpan="5" horizontalAlignment="center" verticalAlignment="center"/>
-  <Image src="~/images/icons/details.png" col="4" horizontalAlignment="right" verticalAlignment="center" cssClass="top-header-right-icon" tap="openInfo"/>
-  </GridLayout>
-  <StackLayout class="blue1-container" colSpan="4" row="1">
-  <ListView items="{{ listItems }}"
-  itemTap="{{ listViewItemTap }}" 
-  cssClass="viewList" separatorColor="rgba(#FF000055)" >
-
-  <ListView.itemTemplate >
-  <GridLayout class="menu-item" colSpan="5" columns="*,*,*,*,*">
-  <Label text="{{contentTypeId}}" cssClass="id-type" horizontalAlignment="left" />
-  <Label text="{{title}}" cssClass="title" colSpan="5" horizontalAlignment="center" verticalAlignment="center"/>
-  <Label text="{{itemId}}" col="4"  cssClass="id-item" horizontalAlignment="right" />
-  </GridLayout>
-  </ListView.itemTemplate>
-
-  </ListView>
-  </StackLayout>
-  </GridLayout -->
-
-  <!--<StackLayout cssClass="container" height="auto" horizontalAlignment="stretch">
-
-  <StackLayout cssClass="header-top" orientation="horizontal" horizontalAlignment="center">
-  <Image src="~/images/ui/logo.png" stretch="none" horizontalAlignment="left" />
-  <Label cssClass="header-title" text="MENU PAGE" horizontalAlignment="center"/>
-  </StackLayout>
-
-  <ListView items="{{ listItems }}"
-  itemTap="{{ listViewItemTap }}" 
-  cssClass="viewList" separatorColor="rgba(#FF000055)" >
-
-  <ListView.itemTemplate >
-  <StackLayout orientation="vertical"    cssClass="menuItem">
-  <DockLayout stretchLastChild="true" cssClass="menuItem-inner">
-  <Label text="{{title}}" cssClass="title" dock="left" horizontalAlignment="left"/>
-  <Label text="{{contentTypeId}}" cssClass="id-type" dock="left" horizontalAlignment="right" />
-  <Label text="{{itemId}}" cssClass="id-item" horizontalAlignment="right" />
-  </DockLayout>
-  </StackLayout>
-  </ListView.itemTemplate>
-
-  </ListView>
-
-  </StackLayout> -->
-
 </Page>
