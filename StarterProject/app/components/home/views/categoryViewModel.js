@@ -7,7 +7,9 @@ var serviceModel = require("../../util/serviceUtil.js");
 var observable = require("data/observable");
 var observableModule = require("data/observable");
 var observableArray = require("data/observable-array");
-
+var imageCacheModule = require("ui/image-cache");
+var imageSource = require("image-source");
+var fs = require("file-system");
 
 var id = "categoryViewModel";
 var listItems = new observableArray.ObservableArray([]);
@@ -16,6 +18,16 @@ var listItems = new observableArray.ObservableArray([]);
 var vm = new observable.Observable();
 var delegate;
 
+var cache = new imageCacheModule.Cache();
+
+cache.placeholder = imageSource.fromFile(fs.path.join(__dirname, "res/no-image.png"));
+//var defaultImage = imageSource.fromFile(fs.path.join(__dirname, "res/no-image.png"));
+cache.maxRequests = 5;
+// Enable download while not scrolling
+cache.enableDownload();
+
+var imgSource;
+var url = "https://github.com/NativeScript.png";
 
 vm.setDelegate = function (_delegate) {
     delegate = _delegate;
@@ -34,19 +46,57 @@ vm.setListData = function (viewData) {
     logger.info("*********setting data model in categoryViewModel...");
     
     var viewList = viewData;
+    var image;
     
     while (listItems.length > 0) {
         listItems.pop();
     }
 	    
     for (var i = 0;i < viewList.length;i++) {
-        var img = dataModel.defaultListThumbnailUrl;
-        img = dataModel.defaultListThumbnailLocalUrl;
         
-        for (var n = 0; n < 10; n++) {
-            img = dataModel.mStrings[n];
-            logger.log("tag","imgUrl :" + img);
-            listItems.push({ title: viewList[i].Title, categoryId:viewList[i].CategoryId, imageUrl:img });
+        for (var n = 0; n < 1; n++) {
+            var url = dataModel.mStrings[n];
+            
+            image = cache.get(url);
+            logger.log("tag2","myimage:" + image);
+            
+            if (image) {
+                // If present -- use it.
+                imgSource = imageSource.fromNativeSource(image);
+                
+                logger.log("tag2","Found Image! >> "+url);
+                logger.log("tag2", "adding items to listViewAdaptor...");
+                
+                listItems.push({ title: viewList[i].Title+" " + i, categoryId:viewList[i].CategoryId, imageUrl:imgSource });
+            } else {
+                // If not present -- request its download.
+                logger.log("tag3","starting download..." + url);
+                
+                
+                cache.on ("downloadedEvent", function(event) {
+                    logger.log("tag3", "download complete:"+ event.target)}
+                );
+                
+                cache.push({
+                               key: url,
+                               url: url,
+                               completed: function (image, key) {
+                                   if (url === key) {
+                                       imgSource = imageSource.fromNativeSource(image);
+;                                      logger.log("tag3","****img downloaded "+imgSource.width + ", " + key);
+                                   }
+                               }
+                           });
+            }
+            
+            // Disable download while scrolling
+            //cache.disableDownload();
+            
+            logger.log("tag2", "imgUrl1 :" + imgSource);
+            defaultImage = "res://no-image";
+            
+            logger.log("tag2", "adding items to listViewAdaptor2...");
+            listItems.push({ title: viewList[i].Title + "_" + i , categoryId:viewList[i].CategoryId, imageUrl:"res://no-image" });
         }
     }
     

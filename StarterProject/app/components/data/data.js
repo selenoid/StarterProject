@@ -15,8 +15,9 @@ dataModule.startMenuId = 8064;
 dataModule.defaultListThumbnailUrl = "http://m.halkbank.com.tr/images/articles/mobil_ipad/2015/hb_donusumlu_mevduat_banner_129x156px-01.jpg";
 dataModule.defaultListThumbnailLocalUrl = "~/images/ui/pic4026.png";
 dataModule.mStrings = [
-    "http://androidexample.com/media/webservice/LazyListView_images/image0.png",
+    
     "http://androidexample.com/media/webservice/LazyListView_images/image1.png",
+    "http://androidexample.com/media/webservice/LazyListView_images/image0.png",
     "http://androidexample.com/media/webservice/LazyListView_images/image2.png",
     "http://androidexample.com/media/webservice/LazyListView_images/image3.png",
     "http://androidexample.com/media/webservice/LazyListView_images/image4.png",
