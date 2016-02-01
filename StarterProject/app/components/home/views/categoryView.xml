@@ -11,7 +11,7 @@
       </GridLayout>
     </StackLayout>
     <StackLayout cssClass="content-wrapper" orientation="vertical" height="auto" horizontalAlignment="stretch" verticalAlignment="top"  >
-      <ListView items="{{ listItems }}"
+      <ListView id="listView" items="{{ listItems }}"
                 itemTap="{{ listViewItemTap }}" 
                 cssClass="viewList" separatorColor="rgba(00000000)"  height="auto">
 
@@ -19,7 +19,7 @@
 
           <StackLayout orientation="vertical" horizontalAlignment="left" verticalAlignment="top" width="stretch" height="auto;">
             <GridLayout class="menu-item" colSpan="3" columns="50%,*,60%" height="auto">
-              <Image row="0" col="0" src="{{ imgObject.imageUrl }}"   horizontalAlignment="left" verticalAlignment="center" cssClass="labelRight" horizontalAlignment="right" stretch="aspectFill" width="50px" height="50px"/>
+              <Image row="0" col="0" src="{{ imageUrl }}"   horizontalAlignment="left" verticalAlignment="center" cssClass="labelRight" horizontalAlignment="right" stretch="aspectFill" width="50px" height="50px"/>
               <Label row="0" col="1" text="{{title}}"             cssClass="title"     horizontalAlignment="left"  verticalAlignment="center" colspan="2"/>
               <Label row="0" col="2" text="{{categoryId}}"            cssClass="id-item"   horizontalAlignment="right"   verticalAlignment="center"/><!-- -->
             </GridLayout>
