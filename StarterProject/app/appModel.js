@@ -20,7 +20,6 @@ appModel.id = "appModel";
 appModel.requestType = -1;
 
 appModel.initModule = function (app) {
-    
     logger.log("initing module..." + app);
     serviceModel.addListener(appModel);
     
@@ -39,7 +38,7 @@ appModel.on("onServiceComplete", function(event) {
     try {
         appModel.changeView(event.object);
     }catch (error) {
-        logger.log("error1:" + error.toString());
+        logger.log("changeView error:" + error.toString());
     }
 });
 
@@ -78,7 +77,7 @@ appModel.changeView = function (serviceResult) {
                  serviceResult.data[0].ContentTypeId + ", " + 
                  serviceResult.data[0].ItemId);
     
-    var navigationEntry = {};
+    var navigationEntry = {test:"TEEEEEEEEESTINGGG!!!!!..."};
     
     switch (appModel.requestType) {
         case dataModel.ContentType.MENU:
@@ -87,6 +86,7 @@ appModel.changeView = function (serviceResult) {
                          serviceResult.data[0].ContentTypeId + ", " + 
                          serviceResult.data[0].ItemId);
             
+            logger.log("tantanasal 1..." + navigationEntry.test);
             navigationEntry = {
                 moduleName : "./components/home/views/menuView",
                 context : {
@@ -94,7 +94,8 @@ appModel.changeView = function (serviceResult) {
                     viewDelegate : viewDelegate
                 }
             };
-            
+            logger.log("tantanasal 2..." + navigationEntry.test);
+        
             break;
         case dataModel.ContentType.CATEGORY:
             try {
@@ -118,6 +119,8 @@ appModel.changeView = function (serviceResult) {
             //
             break;
     }
+    
+    logger.log("tantanasal 3..." + navigationEntry.test);
     
     var topmost = frameModule.topmost();
     topmost.navigate(navigationEntry);

@@ -1,6 +1,0 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="onTestViewLoaded">
-  <StackLayout>
-    <Label text="Naber lan godoş" style.font-size="44px"/>
-    <Button text="Hadi len başka kapıya!" />
-  </StackLayout>
-</Page>

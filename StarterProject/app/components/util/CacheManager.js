@@ -1,4 +1,3 @@
-
 var http = require("http");
 var observable = require("data/observable");
 var logger = require("./util.js");
