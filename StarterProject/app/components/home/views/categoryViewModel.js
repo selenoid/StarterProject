@@ -20,7 +20,7 @@ var delegate;
 
 var cache = new imageCacheModule.Cache();
 
-cache.placeholder = imageSource.fromFile(fs.path.join(__dirname, "res/no-image.png"));
+cache.placeholder = imageSource.fromFile(fs.path.join(__dirname, "res/noimage.png"));
 //var defaultImage = imageSource.fromFile(fs.path.join(__dirname, "res/no-image.png"));
 cache.maxRequests = 5;
 // Enable download while not scrolling

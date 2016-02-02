@@ -1,4 +1,3 @@
-
 var observable = require("data/observable");
 var utilsModule = new observable.Observable();
 var logFilterTag = 'tag3';
