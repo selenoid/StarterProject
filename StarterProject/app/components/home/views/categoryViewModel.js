@@ -10,7 +10,6 @@ var observableArray = require("data/observable-array");
 var imageCacheModule = require("ui/image-cache");
 var imageSource = require("image-source");
 var fs = require("file-system");
-var test = "denemesel";
 
 var id = "categoryViewModel";
 var listItems = new observableArray.ObservableArray([]);
@@ -18,14 +17,12 @@ var listItems = new observableArray.ObservableArray([]);
 //Creates an instance of an observable object.
 var vm = new observable.Observable();
 var delegate;
-var listItemDict = {};
-var listView;
 
 var cache = new imageCacheModule.Cache();
 
 cache.placeholder = imageSource.fromFile(fs.path.join(__dirname, "res/no-image.png"));
 //var defaultImage = imageSource.fromFile(fs.path.join(__dirname, "res/no-image.png"));
-cache.maxRequests = 10;
+cache.maxRequests = 5;
 // Enable download while not scrolling
 cache.enableDownload();
 
@@ -48,42 +45,45 @@ vm.listViewItemTap = function (args) {
 vm.setListData = function (viewData) {
     logger.info("*********setting data model in categoryViewModel...");
     
-    listItemDict = {};
-    
-    for (e in listItemDict) {
-        logger.log("tag3", "item : " + e + " => " + listItemDict[e]);
-    }
-    
     var viewList = viewData;
     var image;
     
     while (listItems.length > 0) {
         listItems.pop();
     }
-    
-    cache.on("downloaded", updateImages);
 	    
     for (var i = 0;i < viewList.length;i++) {
-        for (var n = 0; n < 10; n++) {
+        
+        for (var n = 0; n < 1; n++) {
             var url = dataModel.mStrings[n];
             
             image = cache.get(url);
-            logger.log("tag2", "myimage:" + image);
+            logger.log("tag2","myimage:" + image);
             
             if (image) {
                 // If present -- use it.
                 imgSource = imageSource.fromNativeSource(image);
                 
-                logger.log("tag2", "Found Image! >> " + url);
+                logger.log("tag2","Found Image! >> "+url);
                 logger.log("tag2", "adding items to listViewAdaptor...");
+                
+                listItems.push({ title: viewList[i].Title+" " + i, categoryId:viewList[i].CategoryId, imageUrl:imgSource });
             } else {
                 // If not present -- request its download.
+                logger.log("tag3","starting download..." + url);
+                
+                
+                cache.on ("downloadedEvent", function(event) {
+                    logger.log("tag3", "download complete:"+ event.target)}
+                );
+                
                 cache.push({
                                key: url,
                                url: url,
                                completed: function (image, key) {
                                    if (url === key) {
-                                       //logger.log("tag3", "****img downloaded " + imgSource.width + ", " + key);
+                                       imgSource = imageSource.fromNativeSource(image);
+;                                      logger.log("tag3","****img downloaded "+imgSource.width + ", " + key);
                                    }
                                }
                            });
@@ -93,30 +93,22 @@ vm.setListData = function (viewData) {
             //cache.disableDownload();
             
             logger.log("tag2", "imgUrl1 :" + imgSource);
-            logger.log("tag3", "adding items to listViewAdaptor2...");
+            defaultImage = "res://no-image";
             
-            var itemData = { title: viewList[i].Title + " " + n , categoryId:viewList[i].CategoryId, imageUrl:imgSource };
-           
-            listItemDict[url] = itemData;
-            
-            listItems.push(itemData);
+            logger.log("tag2", "adding items to listViewAdaptor2...");
+            listItems.push({ title: viewList[i].Title + "_" + i , categoryId:viewList[i].CategoryId, imageUrl:"res://no-image" });
         }
-        /*for (e in listItemDict) {
-        logger.log("tag3", "item 2 : " + e + " => " + listItemDict[e]);
-        }*/
     }
     
     logger.log("CATEGORY_ITEMS 2 : " + listItems.length);
 }
 
-vm.initApp = function(dataBundle, lv) {
+vm.initApp = function(dataBundle) {
     logger.info("*******set dataBundle in categoryViewModel...");
     this.set('listItems', listItems);
-    
     try {
         vm.setDelegate(dataBundle.viewDelegate);
         vm.setListData(dataBundle.viewData);
-        this.listView = lv;
     }catch (e) {
         logger.info("Error initing category app..." + e.toString() + " (" + dataBundle.viewData + ")");
     }
@@ -127,7 +119,6 @@ vm.actionGo = function() {
 };
 
 function selectItem (selectionDataItem) {
-    
     try {
         var selectedItem = listItems.getItem(selectionDataItem.index);
         
@@ -145,23 +136,6 @@ function selectItem (selectionDataItem) {
     } catch (error) {
         logger.error("selectItem error : " + error.toString());
     }
-}
-
-function refresh () {
-    for (var i = 0; i < listItems.length; i++) {
-        logger.log("tag3","refreshing item : " + listItems[i].title);
-    }
-}
-
-function updateImages(event) {
-    var item = listItemDict[event.key];
-    logger.log("tag3", "updating images..." + item.title);
-    
-    item.imageUrl = imageSource.fromNativeSource(event.image);
-    logger.log("tag3", "refreshing..." + listView);
-    refresh();
-    
-    listView.refresh();
 }
 
 //Exposes the observable object as a module, which can be required from another js file.

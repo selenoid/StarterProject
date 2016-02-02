@@ -11,10 +11,8 @@ exports.navigatedTo = function (args) {
     var page = args.object;
     page.bindingContext = viewModel;
     
-    var listView = page.getViewById("listView");
-    logger.log("tag3","listView : " + listView);
-    
+    logger.log("categoryView navigated to with");
     
     var dataBundle = page.navigationContext;
-    viewModel.initApp(dataBundle,listView);
+    viewModel.initApp(dataBundle);
 };
