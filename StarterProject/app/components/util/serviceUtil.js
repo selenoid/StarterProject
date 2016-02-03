@@ -42,7 +42,7 @@ serviceModule.getService = function (_url) {
     logger.log("tag",["getting menu service.." + _url]);
            
     var cachedItem = cacheManager.getItemWithKey(_url);
-    logger.log("cached item : " + cachedItem);
+    logger.log("tag","cached item : " + cachedItem);
     
     try {
         if (cachedItem) {
@@ -58,8 +58,8 @@ serviceModule.getService = function (_url) {
     
     http.getJSON(_url).then(function (r) {
         // Argument (r) is JSON!
-        logger.log('GET JSON COMPLETE : ' + r.length);
-            
+        logger.debug("JSON:"+ r);
+        
         cacheManager.addItemWithKey(_url, r);
         serviceModule.onDataRetrieved(r);
     }, function (e) {
@@ -69,36 +69,6 @@ serviceModule.getService = function (_url) {
     });
 }
 
-/*serviceModule.getCategoryService = function (_url, itemId) {
-    logger.log("getting category service.." + _url);
-           
-    var cachedItem = cacheManager.getItemWithKey(_url);
-    logger.log("cached item : " + cachedItem);
-    
-    try {
-        if (cachedItem) {
-            logger.log("retrieve JSON data from CACHE..." + cachedItem);
-            serviceModule.onDataRetrieved(cachedItem);
-            return;
-        }
-    }catch (e) {
-        logger.error("getCategoryService : " + e);
-    }
-    
-    logger.log("retrieve JSON data from remote service.LOADING...");
-    
-    http.getJSON(_categoryUrl).then(function (r) {
-        // Argument (r) is JSON!
-        logger.log('GET JSON COMPLETE : ' + r.length);
-            
-        cacheManager.addItemWithKey(_url, r);
-        serviceModule.onDataRetrieved(r);
-    }, function (e) {
-        logger.log("faz-error : " + e.toString());
-        // Argument (e) is Error!
-        serviceModule.onDataFailed(e);
-    });
-}*/
 
 //Exposes the observable object as a module, which can be required from another js file.
 module.exports = serviceModule;
