@@ -27,7 +27,7 @@ Page {
 
 .content-wrapper {
     margin-top:40px;
-    background-color:#FF0000;
+    /*background-color:#333333;*/
 }
 
 .menu-header {
@@ -36,9 +36,9 @@ Page {
 }
 
 .menu-item {
-    /*background-color:#CCCCCC;*/
-    margin:0 0 3px 0;
-    padding:15px 10px;
+    background-color:#FFFFFF;
+    margin:0 0 0 0;
+    padding:33 10;
 }
 
 .menuItem-inner {
@@ -46,7 +46,7 @@ Page {
 }
 
 .liner {
-    background-color:#222222;    
+    /*background-color:#FF0000;  */  
 }
 
 .title {
@@ -62,7 +62,7 @@ Page {
 }
 
 .image {
-    background-color: #FFcc00;    
+    /*background-color: #FFcc00; */   
 }
 
 /*

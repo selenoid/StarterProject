@@ -24,6 +24,7 @@ appModel.initModule = function (app) {
     logger.log("initing module..." + app);
     serviceModel.addListener(appModel);
     
+    
     /*initing sequence starts..*/
     
     this.on("myCustomEventName", function(eventData) {

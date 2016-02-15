@@ -146,7 +146,7 @@ function selectItem (selectionDataItem) {
 }
 
 function updateImages(event) {
-    listView.refresh();
+    //listView.refresh();
     /*var item = listItemDict[event.key];
     item.imageUrl = imageSource.fromNativeSource(event.image);
     refresh();

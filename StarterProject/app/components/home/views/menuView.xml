@@ -13,7 +13,7 @@
     <StackLayout cssClass="content-wrapper" orientation="vertical" height="auto" horizontalAlignment="stretch" verticalAlignment="top"  >
       <ListView items="{{ listItems }}"
                 itemTap="{{ listViewItemTap }}" 
-                cssClass="viewList" separatorColor="rgba(00000000)"  height="auto" >
+                cssClass="viewList" separatorColor="#FFCC00"  height="auto" >
 
         <ListView.itemTemplate >
 
