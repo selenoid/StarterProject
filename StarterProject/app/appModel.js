@@ -93,7 +93,7 @@ appModel.changeView = function (serviceResult) {
                     viewDelegate : viewDelegate
                 }
             };
-            
+            console.log("navigation entry : " + navigationEntry.moduleName.toString());
             break;
         case dataModel.ContentType.CATEGORY:
             try {
@@ -117,6 +117,8 @@ appModel.changeView = function (serviceResult) {
             //
             break;
     }
+    
+    console.log("changed view..." + navigationEntry.moduleName.toString());
     
     var topmost = frameModule.topmost();
     topmost.navigate(navigationEntry);
