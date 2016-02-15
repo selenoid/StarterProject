@@ -1,132 +1,33 @@
+@import {url('~/platform.css')};
+
 Page {
-    /*background-color:#00FF00;*/
+	background-color : white;
+	font-size : 17;
 }
 
-.container {
-    color:#3377cc;
-    background-color:#0000FF;
+TextField {
+	margin : 10;
+	padding : 10;
 }
 
-.header-container {
-    padding:5px 3px 5px 10px;
-    background-color:#F7F7F7;
+Image {
+	margin-top : 20;
+	margin-left : 0;
+	margin-right : 0;
+	margin-bottom : 80;
+}
+Button {
+	margin : 10;
+	padding : 10;
 }
 
-.logo {
-    width:63px;
+ListView {
+	margin : 5;
+	opacity : 0;
 }
 
-.top-header-left-icon {
-    
+ActionBar {
+	color : white;
+	background-color :  #2E6DAD;
 }
 
-.top-header-right-icon {
-    width:25px;
-    height:25px;
-}
-
-.content-wrapper {
-    margin-top:40px;
-    /*background-color:#333333;*/
-}
-
-.menu-header {
-    color:#334478;
-    font-size:20px;
-}
-
-.menu-item {
-    background-color:#FFFFFF;
-    margin:0 0 0 0;
-    padding:33 10;
-}
-
-.menuItem-inner {
-   /*padding:0 10px;*/
-}
-
-.liner {
-    /*background-color:#FF0000;  */  
-}
-
-.title {
-    margin:0 0 0 10px;
-}
-
-.id-type {
-    background-color:#AAAAAA;
-}
-
-.id-item {
-    background-color:#888888;
-}
-
-.image {
-    /*background-color: #FFcc00; */   
-}
-
-/*
-.container
-{
-    margin-top: 50px;
-    color:#3377cc;
-}
-
-.header-top {
-    padding:10px 0;
-    background-color:#CCCCCC;
-}
-
-Button
-{
-    margin: 10px 0 10px 0;
-    padding: 10px 30px;
-    width: auto;
-    vertical-align: center;
-    background-color: #1277c3;
-    color: #ccc;
-    font-size: 30;
-    border-radius: 5px;
-}
-
-.searchBox
-{
-    border: 1px #666 solid;
-    font-size: 22px;
-    padding: 10px 20px 10px 20px;
-}
-
-.listView
-{
-    
-}
-
-.viewList
-{
-    
-}
-
-.menuItem
-{
-    
-}
-
-.label
-{
-    padding: 0 0 0 10px;
-    font-size: 25px;
-}
-
-.labelRight
-{
-    padding: 0 10px 0;
-    font-size: 16px;
-    color: #888;
-}
-
-.header-title {
-    margin:20px 0 10px 0;
-    font-size:40px;
-    height:30px;
-}
-*/

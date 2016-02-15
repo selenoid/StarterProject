@@ -1,35 +1,47 @@
-var application = require('application');
-var serviceUtil = require('./components/util/serviceUtil.js');
-var logger = require('./components/util/util.js');
-var appModule = require('./appModel.js');
+var app = require("application");
+var cacheManager = require("~/utils/CacheManager.js");
+app.mainModule = "views/main/main";
 
-application.mainModule = "components/home/views/mainView";
-application.cssFile = "./app.css";
+app.selectItem = function (index) {
+    console.log("selecting item in app..." + index);
+}
 
-// START_CUSTOM_CODE_nativeScriptApp
-// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
-
-application.on(application.launchEvent, function (args) {
+app.on(app.launchEvent, function (args) {
     if (args.android) {
         // For Android applications, args.android is an android.content.Intent class.
-        logger.log("Launched Android application with the following intent: " + args.android + ".");
-        appModule.initModule (application.android);
-        
+        console.log("Launched Android application with the following intent: " + args.android + ".");
+
+        console.log("registering event listener...");
+        app.android.registerBroadcastReceiver("myCustomEventName", function (e) {
+            console.log("Broadcast Event : " + e.toString());
+        });
+
     } else if (args.ios !== undefined) {
         // For iOS applications, args.ios is NSDictionary (launchOptions).
-        logger.log("Launched iOS application with options: " + args.ios);
-        
+        console.log("Launched iOS application with options: " + args.ios);
+
         try {
-            appModule.initModule(application.ios);
-        }catch(error){
-            logger.log("error in application init : "+ error.toString());
+            //
+        } catch (error) {
+            console.log("error in application init : " + error.toString());
         }
-        
+
     }
 });
 
-//console.log('application started...');
+/*
+ if (app.android) {
+ app.android.registerBroadcastReceiver(android.content.Intent.ACTION_BATTERY_CHANGED, function onReceiveCallback(context, intent) {
+ var level = intent.getIntExtra(android.os.BatteryManager.EXTRA_LEVEL, -1);
+ var scale = intent.getIntExtra(android.os.BatteryManager.EXTRA_SCALE, -1);
+ var percent = (level / scale) * 100.0;
+ //console.log("Battery: " + percent + "%");
+ });
+ }
+ // When no longer needed, unregister the broadcast receiver
+ if (app.android) {
+ app.android.unregisterBroadcastReceiver(android.content.Intent.ACTION_BATTERY_CHANGED);
+ }
+ */
 
-
-// END_CUSTOM_CODE_nativeScriptApp
-application.start();
+app.start();

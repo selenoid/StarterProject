@@ -1,0 +1,11 @@
+<Page loaded="loaded">
+
+    <Page.actionBar>
+        <ActionBar title="Sign in"></ActionBar>
+    </Page.actionBar>
+	
+    <StackLayout orientation="vertical">
+        <Image src="res://takoz" stretch="none" horizontalAlignment="center" />
+    </StackLayout>
+</Page>
+	

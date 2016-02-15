@@ -1,0 +1,37 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="navigatedTo" actionBarHidden="false">
+
+  <StackLayout cssClass="wrapper" orientation="vertical" height="auto" horizontalAlignment="stretch" verticalAlignment="top" style.background-color="#FFCC00">
+
+    <StackLayout cssClass="container" orientation="vertical" height="62px" horizontalAlignment="stretch" verticalAlignment="top" style.background-color="#FFCC00">
+      <GridLayout class="header-container" colSpan="3" columns="*,*,*" height="60,0">
+        <Image row="0" col="0" src="~/images/ui/logo.png" cssClass="logo" horizontalAlignment="left" verticalAlignment="center" />
+        <Label row="0" col="1" text="CATEGORIES" cssClass="menu-header" horizontalAlignment="center"  verticalAlignment="center" />
+        <Image row="0" col="3" src="~/images/icons/recents.png" horizontalAlignment="right" verticalAlignment="center"/>
+
+      </GridLayout>
+    </StackLayout>
+    <StackLayout cssClass="content-wrapper" orientation="vertical" height="auto" horizontalAlignment="stretch" verticalAlignment="top"  >
+      <ListView items="{{ listItems }}"
+                itemTap="{{ listViewItemTap }}" 
+                cssClass="viewList" separatorColor="rgba(00000000)"  height="auto" >
+
+        <ListView.itemTemplate >
+
+          <StackLayout orientation="vertical" horizontalAlignment="left" verticalAlignment="top" width="stretch" height="auto;">
+            <GridLayout class="menu-item" colSpan="3" columns="50%,*,60%" height="auto">
+              <Image row="0" col="0" src="{{ imageUrl }}"   cssClass="id-type" horizontalAlignment="left" verticalAlignment="center" width="120px;"/>
+              <!--<Label row="0" col="0" text="{{contentTypeId}}" cssClass="id-type"   horizontalAlignment="left"    verticalAlignment="center"/> -->
+              <Label row="0" col="1" text="{{title}}"             cssClass="title"     horizontalAlignment="left"  verticalAlignment="center" colspan="2"/>
+              <Label row="0" col="2" text="{{categoryId}}"            cssClass="id-item"   horizontalAlignment="right"   verticalAlignment="center"/>
+            </GridLayout>
+            <Image src="~/images/ui/liner.png" horizontalAlignment="center" verticalAlignment="center" stretch="fill" height="1px"/>
+          </StackLayout>
+
+        </ListView.itemTemplate>
+
+      </ListView>
+
+    </StackLayout>
+  </StackLayout>
+
+</Page>

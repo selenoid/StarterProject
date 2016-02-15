@@ -1,6 +1,0 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-  <GridLayout>
-    <!-- Add UI declaration here -->
-    <Button text="Start"  horizontalAlignment="center" height="50px"  tap="{{ startApp }}"/>
-  </GridLayout>
-</Page>
