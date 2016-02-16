@@ -5,31 +5,31 @@ var dialogsModule = require("ui/dialogs");
 var socialShare = require("nativescript-social-share");
 var Observable = require("data/observable").Observable;
 var ObservableArray = require("data/observable-array").ObservableArray;
-var MenuListViewModel = require("../../shared/view-models/menuListViewModel");
+var CategoryListViewModel = require("../../shared/view-models/categoryListViewModel");
 var viewModule = require("ui/core/view");
 var page;
 var appDelegate = null;
 
-var menuList = new MenuListViewModel([]);
+var categoryList = new CategoryListViewModel([]);
 var listView = null;
 
 var pageData = new Observable({
-    menuList: menuList
+    categoryList: categoryList
 });
 
 exports.navigatedTo = function (args) {
     var daPage = args.object;
     var navContext = daPage.navigationContext;
-    var menuId = navContext.requestId;
+    var categoryId = navContext.requestId;
     
     appDelegate = navContext.delegate;
-    
-    menuList.empty();
+
+    categoryList.empty();
     pageData.set("isLoading", true);
     
-    console.log("loading menulist via navigate complete..." + menuId);
+    console.log("loading categoryList via navigate complete..." + categoryId);
     
-    menuList.load(menuId).then({
+    categoryList.load(categoryId).then({
     })
             .then(function () {
                 pageData.set("isLoading", false);
@@ -41,10 +41,10 @@ exports.navigatedTo = function (args) {
 };
 
 exports.loaded = function (args) {
-    console.log("menu list loaded...");
+    console.log("category list loaded...");
     page = args.object;
 
-    listView = page.getViewById("menuList");
+    listView = page.getViewById("categoryList");
 
     page.bindingContext = pageData;
 };
@@ -52,22 +52,21 @@ exports.loaded = function (args) {
 exports.select = function (args) {
 
     var item = args.view.bindingContext;
-    var selectedMenuItemData = menuList.selectedMenuItemData(menuList.indexOf(item));
-    
-    console.log("SELECTED MENU ITEM DATA:" +selectedMenuItemData.toString());
-    appDelegate.onListItemSelected(selectedMenuItemData);
+    var selectedCategoryItemData = categoryList.selectedMenuItemData(categoryList.indexOf(item));
+
+    appDelegate.onListItemSelected(selectedCategoryItemData);
 };
 
 exports.delete = function (args) {
     var item = args.view.bindingContext;
-    var index = menuList.indexOf(item);
+    var index = categoryList.indexOf(item);
 };
 
 exports.share = function () {
     var list = [];
     var finalList = "";
-    for (var i = 0, size = menuList.length; i < size; i++) {
-        list.push(menuList.getItem(i).name);
+    for (var i = 0, size = categoryList.length; i < size; i++) {
+        list.push(categoryList.getItem(i).name);
     }
     var listString = list.join(", ").trim();
     socialShare.shareText(listString);

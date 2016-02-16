@@ -1,10 +1,18 @@
 var app = require("application");
+var frameModule = require("ui/frame");
 var cacheManager = require("~/utils/CacheManager.js");
+var configModule = require("~/utils/config.js");
+
 app.mainModule = "views/main/main";
 
-app.selectItem = function (index) {
-    console.log("selecting item in app..." + index);
-}
+app.onListItemSelected = function (selectedItem) {
+    console.log("ONLIST ITEM SELECTED : " + selectedItem);
+    changeView(selectedItem);
+};
+
+app.onMenuInit = function (value) {
+    console.log("value : " + value);
+};
 
 app.on(app.launchEvent, function (args) {
     if (args.android) {
@@ -28,6 +36,45 @@ app.on(app.launchEvent, function (args) {
 
     }
 });
+
+function changeView(data) {
+
+    console.log("CHANGING VIEW : " + data.toString());
+    console.log("config module :: VIEW_DATA : " + configModule.configData["VIEW_CATEGORY"]);
+
+    var navigationEntry = null;
+    var requestId = 0;
+
+    switch (data.contentTypeId)
+    {
+        case configModule.configData["VIEW_CATEGORY"]:
+            console.log("this is VIEW_CATEGORY : " + data.requestId);
+            requestId = data.requestId;
+            navigationEntry = {
+                moduleName: "views/categorylist/categorylist",
+                animated: true
+            };
+            console.log("data.categoryId:" + data.categoryId);
+            break;
+        default:
+            console.log("this is VIEW_MENU : " + data.requestId);
+            requestId = data.requestId;
+            navigationEntry = {
+                moduleName: "views/menulist/menulist",
+                animated: true
+            };
+            
+            console.log("data.menuId:" + data.menuId);
+            break;
+    }
+    
+    
+    
+    navigationEntry.context = {delegate: app, requestId: requestId};
+    
+    console.log("tabarek : " + navigationEntry.context.requestId);
+    frameModule.topmost().navigate(navigationEntry);
+}
 
 /*
  if (app.android) {

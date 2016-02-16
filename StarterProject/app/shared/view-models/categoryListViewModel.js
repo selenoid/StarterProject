@@ -4,16 +4,16 @@ var fetchModule = require("fetch");
 var cacheManager = require("~/utils/CacheManager.js");
 var ObservableArray = require("data/observable-array").ObservableArray;
 
-function MenuListViewModel(items) {
+function CategoryListViewModel(items) {
     var delegate;
     var viewModel = new ObservableArray(items);
-    
+
     viewModel.load = function ( requestId ) {
+        debugger
+        console.log("retrieveing category items from URL..." + requestId); 
         
-        console.log("retrieveing menu items from URL..." + requestId); 
-        
-        var url = "http://contentapi.activebuilder.com/menu/items/"+requestId.toString()+"/1"; 
-        
+        var url = "http://contentapi.activebuilder.com:80/category/subcategories/"+requestId.toString(); 
+
         return fetch(url, function () {
             console.log("labalep...");
         })
@@ -25,9 +25,9 @@ function MenuListViewModel(items) {
             cacheManager.addItemWithKey(url, data);
             data.forEach(function (menuItem) {
                 viewModel.push({
-                    menuText: menuItem.MenuText,
-                    requestId: menuItem.ItemId,
-                    contentTypeId: menuItem.ContentTypeId
+                    title: menuItem.Title,
+                    requestId: menuItem.CategoryId,
+                    imageUrl: menuItem.ImageUrl
                 });
             });
         });
@@ -38,20 +38,21 @@ function MenuListViewModel(items) {
     };
 
     viewModel.selectedMenuItemData = function (index) {
-        console.log("selectedMenuItemData:" + viewModel.getItem(index).requestId);
-        
         var retval = {
-            menuText:viewModel.getItem(index).menuText,
+            title:viewModel.getItem(index).title,
             requestId: viewModel.getItem(index).requestId,
-            contentTypeId: viewModel.getItem(index).contentTypeId,
+            imageUrl: viewModel.getItem(index).imageUrl,
             toString: function () {
                 return "requestId:"+this.requestId + 
                         ", contentTypeId:" + this.contentTypeId + 
-                        ", menuText:"+this.menuText;
+                        ", menuText:"+this.title;
             }
         };
-
+        
+        console.log("RETVO : " +retval.toString());
+        
         return retval;
+        //delegate.onSelectHandler ( {itemId:viewModel.getItem(index).id, contentType:5});
     };
 
     viewModel.empty = function () {
@@ -112,4 +113,4 @@ function handleErrors(response) {
     return response;
 }
 
-module.exports = MenuListViewModel;
+module.exports = CategoryListViewModel;

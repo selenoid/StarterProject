@@ -1,7 +1,7 @@
 /* global exports, Promise, UIBarStyle */
 var app = require("application");
-var dialogsModule = require("ui/dialogs");
 var frameModule = require("ui/frame");
+var dialogsModule = require("ui/dialogs");
 var viewModule = require("ui/core/view");
 var dialogsModule = require("ui/dialogs");
 
@@ -19,15 +19,27 @@ exports.loaded = function (args) {
         var navigationBar = frameModule.topmost().ios.controller.navigationBar;
         navigationBar.barStyle = UIBarStyle.UIBarStyleBlack;
     }
-    console.log("navigating....");
-
-    var navigationEntry = {
-        moduleName: "views/menulist/menulist",
-        context: {delegate: "myDelegate"},
-        animated: true
-    };
     
-    frameModule.topmost().navigate(navigationEntry);
+    app.onListItemSelected(
+            {menuText: "Main Menu",
+                requestId: 8064,
+                contentTypeId: 4,
+                toString: function () {
+                    return "requestId:" + this.requestId +
+                            ", contentTypeId:" + this.contentTypeId +
+                            ", menuText:" + this.menuText;
+                }
+            }
+    );
+    /*
+     var navigationEntry = {
+     moduleName: "views/menulist/menulist",
+     context: {delegate: app},
+     animated: true
+     };
+     
+     frameModule.topmost().navigate(navigationEntry);
+     */
     //frameModule.topmost().navigate("views/menulist/menulist");
 
     /*main.start()
@@ -56,11 +68,11 @@ exports.signIn = function () {
                 return Promise.reject();
             })
             .then(function () {
-                frameModule.topmost().navigate("views/list/list");
+                //frameModule.topmost().navigate("views/list/list");
             });
 };
 
 exports.register = function () {
-    var topmost = frameModule.topmost();
-    topmost.navigate("views/register/register");
+    //var topmost = frameModule.topmost();
+    //topmost.navigate("views/register/register");
 };
