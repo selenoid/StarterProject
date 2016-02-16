@@ -1,33 +1,61 @@
 @import url('~/platform.css');
 
-Page {
-	background-color : white;
-	font-size : 17;
+Page
+{
+    background-color: #FFF;
+    font-size: 17; 
+    padding: 0;
+    margin: 0;
 }
 
-TextField {
-	margin : 10;
-	padding : 10;
+GridLayout
+{
+    margin: 0;
+    padding: 0;
+    background: purple;
 }
 
-Image {
-	margin-top : 20;
-	margin-left : 0;
-	margin-right : 0;
-	margin-bottom : 80;
-}
-Button {
-	margin : 10;
-	padding : 10;
+Label {
+    margin:0 0 0 10;
+    vertical-align: center;
 }
 
-ListView {
-	margin : 5;
-	opacity : 0;
+TextField
+{
+    /**/
 }
 
-ActionBar {
-	color : white;
-	background-color :  #2E6DAD;
+Button
+{
+    margin: 10;
+    padding: 10;
 }
 
+ListView
+{
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+Image
+{
+    margin: 0;
+}
+
+ActionBar
+{
+    color: white;
+    background-color: #2E6DAD;
+}
+
+.menu-item
+{
+    padding: 0 10;
+    background-color: #FFFFFF;
+}
+
+.menu-item-icon
+{
+    margin: 15 0;
+}

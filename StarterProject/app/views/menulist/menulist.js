@@ -23,12 +23,16 @@ exports.navigatedTo = function (args) {
     var menuId = navContext.requestId;
     
     appDelegate = navContext.delegate;
+    console.log("appDelegate : " + appDelegate.id);
     
     menuList.empty();
     pageData.set("isLoading", true);
     
     console.log("loading menulist via navigate complete..." + menuId);
-    
+    listView.animate({
+                    opacity: 0,
+                    duration: 1
+                });
     menuList.load(menuId).then({
     })
             .then(function () {
@@ -50,7 +54,7 @@ exports.loaded = function (args) {
 };
 
 exports.select = function (args) {
-
+    console.log("select in MENULIST...");
     var item = args.view.bindingContext;
     var selectedMenuItemData = menuList.selectedMenuItemData(menuList.indexOf(item));
     
@@ -65,7 +69,6 @@ exports.delete = function (args) {
 
 exports.share = function () {
     var list = [];
-    var finalList = "";
     for (var i = 0, size = menuList.length; i < size; i++) {
         list.push(menuList.getItem(i).name);
     }

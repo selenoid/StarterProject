@@ -9,7 +9,6 @@ function CategoryListViewModel(items) {
     var viewModel = new ObservableArray(items);
 
     viewModel.load = function ( requestId ) {
-        debugger
         console.log("retrieveing category items from URL..." + requestId); 
         
         var url = "http://contentapi.activebuilder.com:80/category/subcategories/"+requestId.toString(); 
@@ -23,11 +22,11 @@ function CategoryListViewModel(items) {
                 }).then(function (data) {
 
             cacheManager.addItemWithKey(url, data);
-            data.forEach(function (menuItem) {
+            data.forEach(function (categoryItem) {
                 viewModel.push({
-                    title: menuItem.Title,
-                    requestId: menuItem.CategoryId,
-                    imageUrl: menuItem.ImageUrl
+                    title: categoryItem.Title,
+                    requestId: categoryItem.CategoryId,
+                    imageUrl: categoryItem.ImageUrl
                 });
             });
         });
@@ -49,10 +48,7 @@ function CategoryListViewModel(items) {
             }
         };
         
-        console.log("RETVO : " +retval.toString());
-        
         return retval;
-        //delegate.onSelectHandler ( {itemId:viewModel.getItem(index).id, contentType:5});
     };
 
     viewModel.empty = function () {

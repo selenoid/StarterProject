@@ -9,7 +9,6 @@ function MenuListViewModel(items) {
     var viewModel = new ObservableArray(items);
     
     viewModel.load = function ( requestId ) {
-        
         console.log("retrieveing menu items from URL..." + requestId); 
         
         var url = "http://contentapi.activebuilder.com/menu/items/"+requestId.toString()+"/1"; 
@@ -38,8 +37,6 @@ function MenuListViewModel(items) {
     };
 
     viewModel.selectedMenuItemData = function (index) {
-        console.log("selectedMenuItemData:" + viewModel.getItem(index).requestId);
-        
         var retval = {
             menuText:viewModel.getItem(index).menuText,
             requestId: viewModel.getItem(index).requestId,

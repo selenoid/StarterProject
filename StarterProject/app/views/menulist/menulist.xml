@@ -1,26 +1,38 @@
-<Page loaded="loaded" navigatedTo="navigatedTo">
-    <Page.actionBar>
-        <ActionBar title="Main Menu">
-            <ActionBar.actionItems>
-                <ActionItem text="Share" tap="share" ios.position="right" />
-            </ActionBar.actionItems>
-        </ActionBar>
-    </Page.actionBar>
-    <GridLayout rows="auto, *" columns="2*, *">
-        <ListView items="{{ menuList }}" id="menuList" row="1" colSpan="2">
-            <ListView.itemTemplate>
-                <GridLayout columns="auto,* ,auto" tap="select" >
-                    <Image src="res://picmenuikon" ios:visibility="collapsed" col="0" height="90" />
-                    <Label text="{{ menuText }}" col="1"/>
-                    <Image src="res://next" ios:visibility="collapsed" col="2" height="28"/>
-                </GridLayout>
-            </ListView.itemTemplate>
-			
-            <!--<ListView.itemTemplate>
-                <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center"/>
-            </ListView.itemTemplate> -->
-			
-        </ListView>		
-        <ActivityIndicator busy="{{ isLoading }}" rowSpan="2" colSpan="2"  width="100"/>
-    </GridLayout>
+<Page loaded="loaded" navigatedTo="navigatedTo" >
+  <Page.actionBar>
+    <ActionBar title="Main Menu">
+      <ActionBar.actionItems>
+        <ActionItem text="Share" tap="share" ios.position="right" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout rows="auto, *" columns="2*, *">
+    <ListView items="{{ menuList }}" id="menuList" row="1" colSpan="2" separatorColor="#fff">
+      <ListView.itemTemplate>
+        <StackLayout>
+          <GridLayout columns="auto,* ,auto" tap="select" class="menu-item">
+
+            <Image src="~/images/picmenuikon.png" ios:visibility="collapsed" col="0" height="70" class="menu-item-icon"/>
+            <!--Image src="res://picmenuikon" ios:visibility="collapsed" col="0" height="90" /-->
+
+            <Label text="{{ menuText }}" col="1"/>
+            <Image src="~/images/next.png" ios:visibility="collapsed" col="2" height="25" />
+
+            <!--Image src="res://next" ios:visibility="collapsed" col="2" height="28"/-->
+          </GridLayout>
+
+          <StackLayout height="1" background-color="#ff0000">
+            <Image src="~/images/liner.png" ios:visibility="collapsed"  horizontalAlignment="stretch" />
+          </StackLayout>
+        </StackLayout>
+
+      </ListView.itemTemplate>
+
+      <!--<ListView.itemTemplate>
+      <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center"/>
+      </ListView.itemTemplate> -->
+
+    </ListView>
+    <ActivityIndicator busy="{{ isLoading }}" rowSpan="2" colSpan="2"  width="100"/>
+  </GridLayout>
 </Page>
