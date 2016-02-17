@@ -1,0 +1,24 @@
+<Page loaded="loaded" navigatedTo="navigatedTo" >
+    <Page.actionBar>
+        <ActionBar title="Main Menu">
+            <ActionBar.actionItems>
+                <ActionItem text="Share" tap="share" ios.position="right" />
+            </ActionBar.actionItems>
+        </ActionBar>
+    </Page.actionBar>
+    <GridLayout rows="auto, *" columns="2*, *">
+        <ListView items="{{ menuList }}" id="menuList" row="1" colSpan="2" separatorColor="#fff">
+            <ListView.itemTemplate>
+                <StackLayout>
+                    <GridLayout columns="auto,* ,auto" tap="select" class="menu-item">
+                        <Image src="res://picmenuikon" ios:visibility="collapsed" col="0" height="90" class="menu-item-icon"/>
+                        <Label text="{{ menuText }}" col="1"/>
+                        <Image src="res://next" ios:visibility="collapsed" col="2" height="25"/>
+                    </GridLayout>
+                    <Image src="res://liner" ios:visibility="collapsed" height="1"  stretch="fill" />
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+        <ActivityIndicator busy="{{ isLoading }}" rowSpan="2" colSpan="2"  width="100"/>
+    </GridLayout>
+</Page>

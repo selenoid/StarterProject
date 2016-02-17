@@ -1,0 +1,53 @@
+{
+  "name": "nativescript-social-share",
+  "version": "1.1.2",
+  "description": "A NativeScript module to use the native social sharing widget",
+  "main": "social-share.js",
+  "nativescript": {
+    "platforms": {
+      "ios": "1.4.0",
+      "android": "1.4.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjvantoll/nativescript-social-share.git"
+  },
+  "keywords": [
+    "NativeScript"
+  ],
+  "author": {
+    "name": "TJ VanToll",
+    "email": "tj.vantoll@gmail.com",
+    "url": "http://tjvantoll.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjvantoll/nativescript-social-share/issues"
+  },
+  "homepage": "https://github.com/tjvantoll/nativescript-social-share",
+  "gitHead": "a4ece5c71bf0a6fa496cf0b19caf3721d9ce7d01",
+  "_id": "nativescript-social-share@1.1.2",
+  "scripts": {},
+  "_shasum": "5700ff23ed4b2a7e35189cf3fce80d0119c87cac",
+  "_from": "nativescript-social-share@>=1.1.2 <2.0.0",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.1",
+  "_npmUser": {
+    "name": "tjvantoll",
+    "email": "tj.vantoll@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "tjvantoll",
+      "email": "tj.vantoll@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "5700ff23ed4b2a7e35189cf3fce80d0119c87cac",
+    "tarball": "http://registry.npmjs.org/nativescript-social-share/-/nativescript-social-share-1.1.2.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/nativescript-social-share/-/nativescript-social-share-1.1.2.tgz",
+  "readme": "ERROR: No README data found!"
+}
